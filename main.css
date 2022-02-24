@@ -4,6 +4,12 @@
   --black: #000000;
 }
 
+*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -46,7 +52,9 @@ header {
 .title {
   font-size: 3rem;
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px black;;
+  text-shadow: 0 0 5px black;
+  text-align: center;
+  transform: translateY(-10rem);
 }
 
 section {
@@ -95,7 +103,6 @@ section {
 
 .content {
   margin: auto;
-  width: 80%;
   max-width: 720px;
 }
 
