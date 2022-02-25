@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="I'm a Information tech and Software dev, learning and exploring the world.">
         <title>Alexander Blankenstein</title>
         <link rel="stylesheet" href="main.css">
 		<link rel="preload" as="image" href="./images/tree.png">
@@ -16,6 +17,7 @@
 		<link rel="preload" as="image" href="./images/cursor_active.png">
 		<link rel="preload" as="image" href="./images/cursor_active2.png">
 		<link rel="preload" as="image" href="./images/cursor_error.png">
+		<script src="./app.js" type="text/javascript"></script>
     </head>
     <body class="light-theme">
 		<div class="wrapper">
@@ -26,12 +28,15 @@
 			</header>
 			<section>
 				<div class="nav">
-					<button class="btn">Dark</button>
-					<a class="btn" href="https://drive.google.com/file/d/1QR0QDSoeBRJZgDDaQwd_9KtQDTTHDu8d/view?usp=sharing">Resume</a>
+					<div class="nav_grid">
+						<div class="nav_btns">
+							<button id="btn_dark" class="btn" onclick="toggleDarkMode(this)">Dark</button>
+							<button class="btn" onclick="sendToResume()">Resume</button>
+							<button class="btn" onclick="scrollToSection('about')" data-anchor="anchor_about">About</button>
+							<button class="btn" onclick="scrollToSection('contact')" data-anchor="anchor_contact">Contact</button>
+						</div>
+					</div>
 				</div>
-
-				<script src="app.js"></script>
-				<noscript>You need to enable JavaScript to view the full site.</noscript>
 			</section>
 			<section class="about">
 				<div class="anchor anchor_about"></div>
