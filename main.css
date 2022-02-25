@@ -24,6 +24,7 @@ body {
 }
 
 header {
+  cursor: url(./images/cursor_arrow.png) 4 4, auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -31,6 +32,10 @@ header {
   height: 100%;
   transform-style: preserve-3d;
   z-index: -1;
+}
+
+section, footer {
+  cursor: url(./images/cursor_auto.png) 4 4, auto;
 }
 
 .background {
@@ -283,6 +288,7 @@ section {
   background-color: #c96;
   opacity: 0.8;
   transition: opacity 0.2s;
+  cursor: url(./images/cursor_pointer2.png) 4 4, auto;
 }
 
 .contact_buttons > button:not(:disabled):nth-child(1):hover:hover, .contact_buttons > button:not(:disabled):nth-child(1):hover:checked, .contact_buttons > button:not(:disabled):nth-child(1):hover:checked + label {
@@ -293,6 +299,7 @@ section {
   background-color: #6c9;
   opacity: 0.8;
   transition: opacity 0.2s;
+  cursor: url(./images/cursor_pointer.png) 4 4, auto;
 }
 
 .contact_buttons > button:not(:disabled):nth-child(2):hover:hover, .contact_buttons > button:not(:disabled):nth-child(2):hover:checked, .contact_buttons > button:not(:disabled):nth-child(2):hover:checked + label {
@@ -361,18 +368,16 @@ button, select {
   outline-offset: 2px;
   opacity: 0.8;
   transition: opacity 0.2s;
-  /*cursor: url(../images/cursor_pointer.png) 4 4, auto;*/
+  cursor: url(./images/cursor_pointer.png) 4 4, auto;
 }
 
 .contact_socialIcon:hover, .contact_socialIcon:checked, .contact_socialIcon:checked + label {
   opacity: 1;
 }
 
-/*
 .contact_socialIcon:active {
-  cursor: url(../images/cursor_active.png) 4 4, auto;
-}
-*/  
+  cursor: url(./images/cursor_active.png) 4 4, auto;
+}  
 
 .contact_socialIcon img {
   width: 100%;
