@@ -78,6 +78,22 @@ section {
   font-family: helvetica;
 }
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #46607a;
+  border: solid #111;
+  border-width: 0 2px;
+}
+
 /* Nav Buttons */
 
 .light-theme {
