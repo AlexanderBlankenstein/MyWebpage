@@ -25,25 +25,23 @@
     </head>
     <body class="light-theme" data-anchor="anchor_about">
 		<div class="wrapper">
-			<header onclick="scrollToSection('about')">
+			<header onclick="scrollToSection('about')" style="min-height: calc(849px - 2.7em)">
 				<img src="./images/background.png" class="background">
 				<img src="./images/tree.png" class="foreground">
 				<h1 class="title">Alexander Blankenstein</h1>
 			</header>
-			<section>
-				<div class="nav">
-					<div class="nav_grid">
-						<div class="nav_btns">
-							<button id="btn_dark" class="btn" onclick="toggleDarkMode(this)">Dark</button>
-							<button class="btn" onclick="sendToResume()">Resume</button>
-							<button class="btn" onclick="scrollToSection('about')" data-anchor="anchor_about">About</button>
-							<button class="btn" onclick="scrollToSection('contact')" data-anchor="anchor_contact">Contact</button>
-						</div>
+			<div class="nav">
+				<div class="nav_grid">
+					<div class="nav_btns">
+						<button class="btn" onclick="sendToResume()">Resume</button>
+						<button class="btn" onclick="scrollToSection('about')" data-anchor="anchor_about">About</button>
+						<button class="btn" onclick="scrollToSection('contact')" data-anchor="anchor_contact">Contact</button>
+						<button id="btn_dark" class="btn" onclick="toggleDarkMode(this)">Dark</button>
 					</div>
 				</div>
-			</section>
+			</div>
+			<div class="anchor anchor_about"></div>
 			<section class="about">
-				<div class="anchor anchor_about"></div>
 				<div class="content">
 					<div class="about_grid">
 						<div class="about_intro">
