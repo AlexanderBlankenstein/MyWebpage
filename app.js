@@ -71,7 +71,7 @@ function toggleDarkMode(button) {
 }
 
 function sendToResume() {
-    location.href="https://drive.google.com/file/d/1zns8HOSEmLbDiyKBbg4fVIHoDQkPnpCK/view?usp=sharing";
+    location.href="https://drive.google.com/file/d/1V6s6mvMJX8gIt5hwf85YhAV8fuMNQfmG/view?usp=sharing";
 }
 
 function clearContact() {
