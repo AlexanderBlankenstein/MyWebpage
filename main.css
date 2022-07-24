@@ -474,3 +474,17 @@ footer svg {
   width: 1em;
   fill: #5e5e5e;
 }
+
+.dnd-btn {
+  height: 3em;
+  width: 5em;
+  border-radius: 10%;
+  border: none;
+  color: var(--dark-grey);
+  background-color: var(--off-white);
+  cursor: pointer;
+}
+
+.dnd-btn:hover {
+  background-color: #a7a7a7;
+}
