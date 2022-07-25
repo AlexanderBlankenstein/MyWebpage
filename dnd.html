@@ -22,6 +22,9 @@
 			</div>
 		</div>
 		<script type="text/javascript">
+			var mapSW = [0, 8192],
+				mapNE = [8192, 0];
+
 			var map = L.map('map' , {attributionControl:false}).setView([0, 0], 2);
 
 			L.tileLayer('./maps/drakivir/{z}/{x}/{y}.png', {
@@ -29,7 +32,121 @@
 				maxZoom: 5,
 				continuousWorld: false,
 				noWrap: true,
+				crs: L.CRS.Simple,
 			}).addTo(map);
+
+			map.setMaxBounds(new L.LatLngBounds(
+				map.unproject(mapSW, map.getMaxZoom()),
+				map.unproject(mapNE, map.getMaxZoom())
+			));
+
+			//Icons
+			var info_icon = L.icon({
+				iconUrl: './scripts/leaflet/images/info-icon.png',
+				iconSize: [28, 28],
+				iconAnchor: [10, 10],
+				popupAnchor: [5, -5],
+				shadowUrl: './scripts/leaflet/images/marker-shadow.png',
+				shadowSize: [68,75],
+				shadowAnchor: [25, 58]
+			})
+
+			//Markers 
+			var marker = L.marker([0, 0], {
+				draggable: true,
+			});
+			marker.bindPopup('<b>test</b>');
+			marker.on('dragend', function(e) {
+				//marker.getPopup().setContent('Location: ' + marker.getLatLng().toString() + '<br />' + 'Pixels ' + map.project(marker.getLatLng(), map.getMaxZoom().toString())).openOn(map);
+				marker.getPopup().setContent('Location: ' + marker.getLatLng().toString()).openOn(map);
+			});
+
+
+			//Towns
+			var bertholdt = L.marker(map.unproject([1680,2839], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Bertholdt (Pop. 150)</b>' + '<br />' + 'Bertholdt was only just a tiny hamlet only a few decades ago. While it has maintained its small-town feel, it is now a popular destination for adventurers and treasure hunters looking for riches rumoured to be hidden in the Dragonspine Mountains to the North. The people are accommodating and friendly, and the leaves of the forest make for beautiful scenery. Many of the townsfolk are quite in-tune with nature and the forest. Some residents are opportunistic, taking advantage of naïve travelers. Ultimately, this small burg is but a pitstop on the way to greater adventures.');
+
+			var montreaux = L.marker(map.unproject([1038,3489], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Montreaux (Pop. 800)</b>' + '<br />' + 'Home to the Golden Elderwood from which the forests sprang an era ago. The people of Montreaux venerate nature and the environment, and act a bit snobbish and superior towards those who don’t. Most are vegetarian, if not vegan, their diet consisting of mostly vegetables and mushrooms. While they take a very conceited attitude towards others at times, Montreauxlians also know how to party. Alcohol and drug use is commonplace, and parties are routinely hosted around the Golden Elderwood at least once a week to honour the bountiful harvests and gifts that the massive tree, which is the symbol of the city, has given them over the years. Many residents are druids and care for animals and plant life, and the vegetation they farm is renowned as being the highest-quality in Drakivir.');
+
+			var ovarksRetreat = L.marker(map.unproject([2035,1415], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Ovak’s Retreat (Pop. 600)</b>' + '<br />' + 'Once an isolated castle, the property was inherited by Ovak Shalesmite who chose to develop it into a thriving settlement where the ostracized could live freely. Ovak’s Retreat has several strict laws that all citizens and visitors must follow and that are heavily enforced by the sheriffs of the settlement. Thanks to the abundance of exotic flora and fauna, trading and developing luxury spices, perfumes, and other valuable items in common here. Other residents lean more into business and government administration, which Ovak himself oversees. Beneath the city lies a mine which has become obsolete in recent years as the Deep Drivers of Arcfast dominate the marketplace for raw materials. The mines are now the perfect place where a black market and criminal underbelly has been slowly expanding.');
+
+			var nimbusSummit = L.marker(map.unproject([2789,2785], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Nimbus Summit (Pop. 100)</b>' + '<br />' + 'Populated by a few dozen Goliaths, Air Genasi and Aarakocra, the tribe tends to keep to itself, and the rest of the world tends to forget they exist as most humans can barely breathe here. While there are occasions where a merchant needs to collect some wares, ultimately the trek up or down the mountain is too perilous for most, though the Aarakocra manage just fine. A new fortress was recently built by the newest leader of the tribe for times where Nimbus Summit may come under attack, though the residents are confused as they can’t fathom why such a precaution is necessary.');
+			
+			var shantytown = L.marker(map.unproject([5201,1723], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Shantytown (Pop. 200)</b>' + '<br />' + 'Shantytown is a popular place for sailors and other travelers to stop and enjoy spending their hard-earned gold. A hub of morally grey activities, Shantytown’s motto is “Have fun, just don’t be an ass.” Justice is placed in the hands of the crowd, and if somebody deserves a beating, that’s likely what they’ll get. Gambling, drinking, prostitution, drugs, and fighting are all legal, and many illegal activities are overlooked. Overseeing the town is a powerful ex-pirate lord whose existence is enough to limit the amount of excessively troublesome behaviour. Her style of justice is harsher than anyone else in Drakivir, and the respect and fear she commands amongst sea-farers is unparalleled.');
+
+			var celestine = L.marker(map.unproject([3521,1780], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Celestine (Pop. 35)</b>' + '<br />' + 'A tiny town developed to house the families of mages and scholars working at the nearby Celestine College, life is simple for these folk, and they feel secure and safe knowing that powerful wizards are a mere stone’s throw away. While there’s not necessarily much to do here, the College ensures that there is scheduled entertainment each week, keeping the families happy while their partners or parents work hard to solve the problems of the world.');
+
+			var hillsburough = L.marker(map.unproject([1962,5562], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Hillsburough (Pop. 70)</b>' + '<br />' + 'A small settlement for some rather large characters, Hillsburough is home to several giants who roam the hills of Western Drakivir. Some live in hollowed out boulders, others underneath hills, but most live in the Shooting Star, a castle capable of flight owned by Storm Giant siblings. Ultimately, giants don’t fit in in any other cities, as their size makes it difficult to find a home or place to work or exist. While the giants of Hillsburough don’t blame the smaller humanoid races for excluding them from their societies, they often feel the sting of rejection and are quick to help those who deserve it.');
+
+			var svern = L.marker(map.unproject([6100,6562], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Svern (Pop. 300)</b>' + '<br />' + 'A small community for elderly retirees to move to once they have lived out most of their lives. The warm sun and waters are rejuvenating, and the small town government runs numerous programs to ensure the seniors are taken care of in their final years. Svern also seconds as a shipping port, and numerous ships pass by on a daily basis, dropping off and picking up cargo and passengers.');
+
+			var peltark = L.marker(map.unproject([7075,1645], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Peltark (Pop. 800)</b>' + '<br />' + '');
+
+
+			//Cities
+			var krackaster = L.marker(map.unproject([1914,3420], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Krackaster (Pop. 5,000)</b>' + '<br />' + 'A bustling city situated around a giant sinkhole called the Maw, Krackaster was one of the first settlements in Drakivir and has persisted to present day. Much of the older architecture has been swallowed by the Maw, and in its place the citizens have built new homes time and time again as the sinkhole grows. The people are industrious and well-versed in carpentry, building and maintenance, as much of the community is built upon the construction industry. There are groups of extremely poor, desolate and vulnerable individuals, contrasted by the rich, powerful, and famous, all within the same walls. Krackaster is a hub of activity and has everything one could need in a modern city.');
+
+			var arcfast = L.marker(map.unproject([3108,6129], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Arcfast (Pop. 6,000)</b>' + '<br />' + 'The technological capital, the country is highly dependent on the people of Arcfast. Plentiful veins of rare and valuable minerals deep below the city, most important of which is a substance called morkite. The population consists of mainly Dwarves and Gnomes who have entered into a mutual agreement with one another: the Dwarves mine, while the Gnomes provide tools and pay for the materials used within their own work. The Dwarven mining operation is in the Brig, and the members of his faction are the Deep Divers. Additionally, the Gnome base of operations is situated in the Workshop. While not all of those in this group, called the Creators, are gnomes, the vast majority are. Their primary goal is to invent new things. The city is lit by electric-powered contraptions, and automated guards patrol to deter criminal activity. Most settlements have some connection to Arcfast to make use of their resources, and the Azure Order collaborates extensively to ensure that the people of Drakivir are well-protected. The residents of the town are quite focused on their work, and as such there is minimal entertainment in Arcfast.');
+
+			var mulsanir = L.marker(map.unproject([5363,4879], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Mulsanir (Pop. 10,000)</b>' + '<br />' + 'The second largest city in Drakivir, Mulsanir is devoted primarily to entertainment and leisure. Most residents work short shifts and just a few days each week. All manual labour is performed by undead workers. Mulsanir has the second highest number of necromancers in all the material plane behind only Thay in Faerun, with a significant part of the living workforce being composed of wizards of various abilities capable of controlling the zombie workforce. They take special care to ensure that the soul of the deceased is at peace, unlike many of the evil necromancers of the world. Everyone must provide consent for their body to be used for this purpose before death, but most provide consent as they see it as their duty as a Mulsanirian. Each body is used for a maximum of 5 years, after which it is cremated and never used for necromancy again. Since the residents have so much free time, the entertainment district is vast and includes much to do. ');
+
+			var divintria = L.marker(map.unproject([5520,2778], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Divintria (Pop. 6,000)</b>' + '<br />' + 'A large city that is mainly devoted to the worship of the many gods of the multiverse. The Tritiery is a large structure which symbolize the city’s three values: Faith, Hope, and Penance. Additionally, there is a significant collection of religious works, as well as an art gallery of history’s greatest religious pieces. It is guarded by the Divintria Militant, priests trained in hand-to-hand combat. The people here hold rather repugnant personalities. There is significant strife between worshippers of different gods. Religious sites and temples are frequently vandalized, and outsiders are harassed by the religious zealots and worshippers. The Renegade’s Den acts as a home to those who worship the more chaotic or evil gods. While Divintria dissuades all from worshipping them, they still hold a belief that every person has the freedom to worship whomever they choose.');
+
+			var stormdale = L.marker(map.unproject([3172,2594], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Stormdale (Pop. 1,300)</b>' + '<br />' + 'Perpetually stormy grey skies and rough, churning waves are symbolic of Stormdale. Built along the coast of the Royal Sea, Stormdale has experienced its fair share of horror and destruction by the raging seas and winds. The entire city was developed with this in mind, with all buildings heavily reinforced or built well-above sea level. Swimming is not permitted by the government, as most swimmers would be dragged into the powerful currents of the Royal Sea. Most of the community is very tight-knit as they’ve been through the most horrible of circumstances together and as such they take care of each other where necessary. Stormdale has become a tourist and vacation destination for thrill-seekers and storm chasers who want to see the Waltzing Lovers from a relatively safe vantage point.');
+
+			var ceruleanHeights = L.marker(map.unproject([3979,3594], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Cerulean Heights (Pop. 15,000)</b>' + '<br />' + 'Capital of Drakvir. The Azure Order live here and are the predominant law enforcement and magic organization in Drakivir. They as well as all of Drakivir are ruled by the Triumvirate – 3 representatives whose decisions shape the future of the country. Most residents adhere to schedules and tend to be bureaucratic in many of their daily activities. Arcfast has provided clocklike devices in most public areas, which visually display the time of day. To access the city, one must know the special ways to get there or know the sigil of a teleportation circle within the city. Given the vast population, one would think it may be inefficient, however the system has worked quite well since it was instated and ensures the protection of the Capital. Most Azure Order Administrators within the various settlements in Drakivir can send travelers to Cerulean Heights when desired.');
+
+
+			// ruins
+			var stormdaleRuins = L.marker(map.unproject([4183,2423], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Stormdale Ruins (Pop. -1000)</b>' + '<br />' + 'As Stormdale’s first location, this city was destroyed by the weather when the Waltzing Lovers, a pair of waterspouts that have been active in the Royal Sea for years, made landfall for a short time. This killed a significant portion of the population. Stormdale’s new location, though much safer, is a somber reminder of the fury of nature.');
+
+
+			//fortress
+			var hellanineHold = L.marker(map.unproject([6587,3716], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Hellanine Hold (Pop. 1,200)</b>' + '<br />' + 'The fortress halls of Hellanine Hold are situated inside a caldera and are constantly heated by the magma below. The region surrounding is to be avoided. The Fire Giants, ruled by the once-warmonger Drarion Volcanis, claim the area as rightfully theirs, and this claim has been officially recognized. However, the giants seek to expand their power while guarding the land they have already claimed. It is here that some of the best weapons and armours are forged using the heat from the magma below. While the fortress only housed a few hundred giants a few months ago, an agreement made between the Fire Giants, as well as numerous clans of Orcs and Hobgoblins throughout Drakivir has led to an influx of residents. The reasoning for this agreement is not yet known to the wider world, but has caused concern amongst nearby cities who feel threatened by the gathering forces.');
+
+
+			//Layer Groups
+			var lg_cities = L.layerGroup(
+				[ceruleanHeights, mulsanir, arcfast,
+				divintria, stormdale, krackaster]).addTo(map);
+
+			var lg_towns = L.layerGroup(
+				[montreaux, bertholdt, hillsburough, svern,
+				peltark, shantytown, celestine, ovarksRetreat,
+				nimbusSummit]);
+			
+			var lg_fortress = L.layerGroup([hellanineHold]);
+
+			var lg_ruins = L.layerGroup([stormdaleRuins]);
+
+			var lg_locationMarker = L.layerGroup([marker]);
+
+			var overlays = {
+				"Cities" : lg_cities,
+				"Towns" : lg_towns,
+				"Fortress" : lg_fortress,
+				"Ruins" : lg_ruins,
+				"Location Marker" : lg_locationMarker,
+			}
+
+			// add layer control
+			L.control.layers(null, overlays).addTo(map);
 		</script>
 	</body>
 </html>
