@@ -23,7 +23,7 @@
 		</div>
 		<script type="text/javascript">
 			var mapSW = [-1000, 8192],
-				mapNE = [9192, 0];
+				mapNE = [9192, -500];
 
 			var map = L.map('map' , {attributionControl:false}).setView([0, 0], 2);
 
@@ -89,7 +89,7 @@
 				.bindPopup('<b>Svern (Pop. 300)</b>' + '<br />' + 'A small community for elderly retirees to move to once they have lived out most of their lives. The warm sun and waters are rejuvenating, and the small town government runs numerous programs to ensure the seniors are taken care of in their final years. Svern also seconds as a shipping port, and numerous ships pass by on a daily basis, dropping off and picking up cargo and passengers.');
 
 			var peltark = L.marker(map.unproject([7075,1645], map.getMaxZoom()), {icon: info_icon})
-				.bindPopup('<b>Peltark (Pop. 800)</b>' + '<br />' + '');
+				.bindPopup('<b>Peltark (Pop. 800)</b>' + '<br />' + 'Peltark was established to be a place of refuge for those experiencing harassment and hatred. The city has grown exponentially, with many dragonborns and dragonkin taking up residence there. Dozens of dragons have also established lairs in the surrounding areas, ensuring that the area is well-protected from those who would harm the city. The inhabitants are suspicious of outsiders and keep to themselves. They are predominantly a fishing, hunting and gathering village. While there are dozens of hoards in this area, making the lands especially suffused with hoard magic, the Azure Order has specifically put out notices to would-be treasure hunters to leave this area be. Those who try to find the hoards of the dragons who live here will meet certain doom. Many people of Drakivir are concerned about the existence of Peltark and want the government to do something about it, as they feel that allowing dragons to safely congregate will allow them to breed and will lead to a massive surge in the dragon population, which has been decimated over the years due to war, as well as racist policies and practices. ');
 
 
 			//Cities
