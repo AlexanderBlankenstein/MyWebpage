@@ -22,8 +22,8 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			var mapSW = [0, 8192],
-				mapNE = [8192, 0];
+			var mapSW = [-1000, 8192],
+				mapNE = [9192, 0];
 
 			var map = L.map('map' , {attributionControl:false}).setView([0, 0], 2);
 
@@ -53,6 +53,7 @@
 
 			//Markers 
 			var marker = L.marker([0, 0], {
+				icon: info_icon,
 				draggable: true,
 			});
 			marker.bindPopup('<b>test</b>');
@@ -113,12 +114,49 @@
 
 			// ruins
 			var stormdaleRuins = L.marker(map.unproject([4183,2423], map.getMaxZoom()), {icon: info_icon})
-				.bindPopup('<b>Stormdale Ruins (Pop. -1000)</b>' + '<br />' + 'As Stormdale’s first location, this city was destroyed by the weather when the Waltzing Lovers, a pair of waterspouts that have been active in the Royal Sea for years, made landfall for a short time. This killed a significant portion of the population. Stormdale’s new location, though much safer, is a somber reminder of the fury of nature.');
+				.bindPopup('<b>Stormdale Ruins (Pop. -100)</b>' + '<br />' + 'Wiped out by the Waltzing Lovers, the twin water spouts in the Royal Sea, these ruins were once the location of the city of Stormdale. Now flooded and scavenged, there is little left for any who travel here. However, rumours speak of a recent increase in activity here, as shadows have been seen moving about the ruins in the moonlight some nights.');
+
+			var starhavenRuins = L.marker(map.unproject([3072,4480], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Starhaven Ruins (Pop. 0)</b>' + '<br />' + 'A small Elven city that was once an intellectual center of Drakivir, Starhaven was suddenly destroyed over a century ago. What exactly happened remains a mystery, but those who have gone to the island since have been driven away by demonic entities, leaving people to speculate that a demonic incursion led to Starhaven’s demise. The demonic creatures remain to this day, roaming the ruins and hindering any researchers trying to find out more, as well as treasure hunters hoping to plunder the ancient city.');
 
 
 			//fortress
 			var hellanineHold = L.marker(map.unproject([6587,3716], map.getMaxZoom()), {icon: info_icon})
 				.bindPopup('<b>Hellanine Hold (Pop. 1,200)</b>' + '<br />' + 'The fortress halls of Hellanine Hold are situated inside a caldera and are constantly heated by the magma below. The region surrounding is to be avoided. The Fire Giants, ruled by the once-warmonger Drarion Volcanis, claim the area as rightfully theirs, and this claim has been officially recognized. However, the giants seek to expand their power while guarding the land they have already claimed. It is here that some of the best weapons and armours are forged using the heat from the magma below. While the fortress only housed a few hundred giants a few months ago, an agreement made between the Fire Giants, as well as numerous clans of Orcs and Hobgoblins throughout Drakivir has led to an influx of residents. The reasoning for this agreement is not yet known to the wider world, but has caused concern amongst nearby cities who feel threatened by the gathering forces.');
+
+			var castleCravine = L.marker(map.unproject([3926,5258], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Castle Cravine</b>' + '<br />' + 'Perched high atop the cliffs The castle has stood for centuries and was the first fortress to be built in Drakivirian history. Though it once housed armies led by the Vampire Lord Pragus Cravine, now it has been made into a place of healing and self-improvement. Vampires and other sentient undead, as well as other creatures with violent urges come to Castle Cravine with the intention of changing their ways, isolated from society while they aim to better themselves before re-entering the world, prepared with the tools necessary to become members of society once more. For the good of both the residents and the wider world, the gates of the Castle remain sealed.');
+
+
+			//Misc.
+			var theSunkenKeep = L.marker(map.unproject([3901,3884], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>The Sunken Keep</b>' + '<br />' + 'A quarter-century ago, prisoners were dealt with by the settlements who arrested them. Punishments were inconsistent and prisoners were treated however the settlements saw fit. While this remains the status quo for minor crimes, more serious or repeat offenders are sent to the Sunken Keep, the prison in the waters below Cerulean Heights. To date, nobody has successfully escaped. Those who have served their time and been released have spoken of monstrously large shadows lurking in the dark waters outside the keep, dissuading prisoners from trying to break out.');
+
+			var xirithXur = L.marker(map.unproject([7352,6515], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Xirith-Xur</b>' + '<br />' + 'The home of the Mind Flayers of Drakivir, Xirith-Xur appears as a barren island to passerby. However, beneath the island is a massive underground colony of Mind Flayers who have fairly amicable relations with the mainland. Shipments travel between Svern and Xirith-Xur frequently, but no Mind Flayers travel to Drakivir as a formal agreement with the Azure Order maintains that they are not to enter Drakivirian land. ');
+
+			var theInstutute  = L.marker(map.unproject([666,6255], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>The Instutute</b>' + '<br />' + 'A massive Faerzress Crystal which glows a dull pink, illuminating the surrounding area in the evenings. Inside is the greatest source of information regarding Drakivir’s past, present, and future, a library of thought that is overseen by three Planetars. The public is welcome to access the Institute, however there is always a threat of getting lost in the everchanging internal structure.');
+
+			var foggyHollow = L.marker(map.unproject([6060,5499], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Foggy Hollow</b>' + '<br />' + 'An encampment run by the Green Clerics, healers and scholars who fall under many deities who work to heal the sick. The residents of Foggy Hollow, however, are the most ill individuals in Drakivir and beyond, where both medicine and magic have failed to heal them thus far. Their ailments are severe, contagious, and unstudied, and the Green Clerics seek to understand the illnesses in order to treat the patients and prevent and prepare for outbreaks. Some of the area is open to visitors, however much of Foggy Hollow is under quarantine from the outside world.');
+
+			var celestineCollege = L.marker(map.unproject([3669,1643], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Celestine College</b>' + '<br />' + 'Built around a snarl, Celestine College has remained true to its original form over the past centuries, unchanging in its small scope and lofty ideals. With approximately 50 members, only a handful of whom are instructors or administrators, Celestine College is a small institution pursuing all manner of magical research, as well as teaching many spellcasters just starting out how to control their abilities. Though the College has minimal interaction with the wider world, inquisitive minds can attend once per season (4x per year) to propose research into specific topics, provided they foot the bill should their proposal be accepted. This practice has been ongoing for most of the College’s existence and is the main reason it is able to continue functioning while providing minimal services to the greater community.');
+
+			var obsidianSpire = L.marker(map.unproject([5753,1427], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Obsidian Spire</b>' + '<br />' + 'The Obsidian Spire stretches high beyond the clouds and deep under the waves. A tower made of gleaming black obsidian stone, the Obsidian Spire is home to the Obsidian Magi, an order of powerful mages composed of High Elves. The Obsidian Magi are a far-reaching organization who predominantly accumulate, store, research, and develop magical items, among other things. The Pontiff of the Spire, Silvalor Valindri, is a well-known name to many Drakivirians as he is considered to be perhaps the most powerful man in Drakivir.');
+
+
+			//Bridges
+			var bridgeOfMerchants = L.marker(map.unproject([3593,6161], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Bridge of Merchants</b>' + '<br />' + 'Unlike the other two bridges, the Bridge of Merchants is unregulated. Though a few guards wander the bridge, there is no justice system in place. This has attracted all sorts of merchants. Some peddle wares of incomprehensible value, while others sell actual garbage. Scams are commonplace, as are thefts and muggings. However, if one is in need of a hard-to-find item, this is likely the best place to go. This extends to magic items as well, as there are merchants who, though hard to find, may be able to sell players exactly what they are looking for.');
+
+			var bridgeOfMelodies = L.marker(map.unproject([2870,5889], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Bridge of Melodies</b>' + '<br />' + 'The Bridge of Melodies acts as one of the cultural centers of Drakivir, where music and performance are king. At any given time there are multiple street musicians playing, hoping to be found by the House of M, the organization that oversees the activities of the Bridge of Melodies and sets up the larger concerts that showcase the best musicians. Much like the Bridge of Might, there are frequent opportunities for individuals to show off their skills, including the Monthly Play-offs and the Annual Battle of the Bards, which brings together Play-off winners from each of the past 12 months, pitting them against one another to determine the hottest musician(s) of the year.');
+
+			var bridgeOfMight = L.marker(map.unproject([5413,1844], map.getMaxZoom()), {icon: info_icon})
+				.bindPopup('<b>Bridge of Might</b>' + '<br />' + 'The most visited of the three bridges, the Bridge of Might boasts a number of combat tournaments and festivals, with competitions taking place most weeks. The bridge is well prepared to host hundreds or even thousands of guests, and there are a variety of vendors for combatants looking to gain an edge. With both individual competitions as well as group competitions, there is something for everyone, spectators, gamblers, and competitors alike.');
 
 
 			//Layer Groups
@@ -131,9 +169,15 @@
 				peltark, shantytown, celestine, ovarksRetreat,
 				nimbusSummit]);
 			
-			var lg_fortress = L.layerGroup([hellanineHold]);
+			var lg_fortress = L.layerGroup([hellanineHold, castleCravine]);
 
-			var lg_ruins = L.layerGroup([stormdaleRuins]);
+			var lg_ruins = L.layerGroup([stormdaleRuins, starhavenRuins]);
+
+			var lg_bridges = L.layerGroup([bridgeOfMerchants, bridgeOfMelodies, bridgeOfMight]);
+
+			var lg_misc = L.layerGroup(
+				[theSunkenKeep, xirithXur, theInstutute, foggyHollow,
+				celestineCollege, obsidianSpire]);
 
 			var lg_locationMarker = L.layerGroup([marker]);
 
@@ -142,6 +186,8 @@
 				"Towns" : lg_towns,
 				"Fortress" : lg_fortress,
 				"Ruins" : lg_ruins,
+				"Bridges" : lg_bridges,
+				"Misc" : lg_misc,
 				"Location Marker" : lg_locationMarker,
 			}
 
